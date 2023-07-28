@@ -16,4 +16,3 @@ jobs:
       - run: flutter pub get
       - run: flutter test
       - run: flutter build web
-    baseHref: /Tic-Tac-Toe/
