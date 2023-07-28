@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -32,6 +35,10 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double width = kIsWeb
+        ? MediaQuery.sizeOf(context).height
+        : MediaQuery.sizeOf(context).width;
+    double height = MediaQuery.sizeOf(context).height;
     return Scaffold(
       backgroundColor: Colors.black,
       body: Container(
@@ -48,14 +55,14 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                    padding: const EdgeInsets.all(30.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
                           'Player X',
                           style: TextStyle(
-                            fontSize: !oTurn ? 30 : 20,
+                            fontSize: !oTurn ? 25 : 20,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
@@ -69,13 +76,13 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.all(30.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text('Player O',
                             style: TextStyle(
-                                fontSize: oTurn ? 30 : 20,
+                                fontSize: oTurn ? 25 : 20,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white)),
                         Text(
@@ -90,6 +97,8 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Container(
+              width: width * 0.7,
+              height: height * 0.7,
               margin: const EdgeInsets.symmetric(horizontal: 12),
               decoration: const BoxDecoration(color: Colors.white54),
               child: GridView.builder(
@@ -117,8 +126,8 @@ class _HomePageState extends State<HomePage> {
                     );
                   }),
             ),
-            Expanded(
-                child: Row(
+            SizedBox(height: 12),
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 OutlinedButton(
@@ -134,7 +143,8 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ],
-            ))
+            ),
+            SizedBox(height: 12),
           ],
         ),
       ),
