@@ -35,23 +35,26 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    double width = kIsWeb
-        ? MediaQuery.sizeOf(context).height
-        : MediaQuery.sizeOf(context).width;
+    double width =
+        kIsWeb || Platform.isWindows || Platform.isLinux || Platform.isMacOS
+            ? MediaQuery.sizeOf(context).height
+            : MediaQuery.sizeOf(context).width;
     double height = MediaQuery.sizeOf(context).height;
     return Scaffold(
       backgroundColor: Colors.black,
       body: Container(
+        height: height,
         decoration: const BoxDecoration(
             gradient: LinearGradient(
                 // begin: Alignment.topRight,
                 // end: Alignment.bottomLeft,
                 tileMode: TileMode.decal,
                 colors: [Colors.purple, Colors.pink])),
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              child: Row(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
@@ -95,57 +98,58 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-            ),
-            Container(
-              width: width * 0.7,
-              height: height * 0.7,
-              margin: const EdgeInsets.symmetric(horizontal: 12),
-              decoration: const BoxDecoration(color: Colors.white54),
-              child: GridView.builder(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  itemCount: 9,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3),
-                  itemBuilder: (BuildContext context, int index) {
-                    return GestureDetector(
-                      onTap: () {
-                        _tapped(index);
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black12)),
-                        child: Center(
-                          child: Text(
-                            displayElement[index],
-                            style: const TextStyle(
-                                color: Colors.white, fontSize: 35),
+              Container(
+                width: width * 0.7,
+                // height: height * 0.7,
+                margin: const EdgeInsets.symmetric(horizontal: 12),
+                decoration: const BoxDecoration(color: Colors.white54),
+                child: GridView.builder(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    itemCount: 9,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3),
+                    itemBuilder: (BuildContext context, int index) {
+                      return GestureDetector(
+                        onTap: () {
+                          _tapped(index);
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black12)),
+                          child: Center(
+                            child: Text(
+                              displayElement[index],
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 35),
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  }),
-            ),
-            SizedBox(height: 12),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                OutlinedButton(
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.white30)),
-                  // color: Colors.indigo[50],
-                  // textColor: Colors.black,
-                  onPressed: _clearScoreBoard,
-                  child: const Text(
-                    "Clear Score Board",
-                    style: TextStyle(color: Colors.white),
+                      );
+                    }),
+              ),
+              SizedBox(height: 12),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  OutlinedButton(
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.white30)),
+                    // color: Colors.indigo[50],
+                    // textColor: Colors.black,
+                    onPressed: _clearScoreBoard,
+                    child: const Text(
+                      "Clear Score Board",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 12),
-          ],
+                ],
+              ),
+              SizedBox(height: 12),
+            ],
+          ),
         ),
       ),
     );
