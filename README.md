@@ -1,17 +1,30 @@
-# tictactoe
+<h1 align="center" id="title">Tic-Tac-Toe</h1>
 
-A new Flutter project.
 
-## Getting Started
+<h2>Project Screenshots:</h2>
+<p>
+<img src="/preview/game1.png" alt="project-screenshot" width="144" height="320">
 
-This project is a starting point for a Flutter application.
+</p>
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
--live on github pages
+<h2>🛠️ Installation Steps:</h2>
+
+<p>1. Clone Repo</p>
+
+```
+git clone https://github.com/bansalgaurav852/Tic-Tac-Toe.git
+```
+
+<p>2. install dependencies</p>
+
+```dart
+Flutter pub get
+```
+
+<p>3. Run App</p>
+
+```dart
+Flutter run
+```
