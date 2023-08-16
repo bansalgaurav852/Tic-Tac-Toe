@@ -3,7 +3,7 @@
 
 <h2>Project Screenshots:</h2>
 <p>
-<img src="/preview/game1.png" alt="project-screenshot" width="144" height="320">
+<img src="/preview/game1.png" alt="project-screenshot" width="320" height="320">
 
 </p>
 
